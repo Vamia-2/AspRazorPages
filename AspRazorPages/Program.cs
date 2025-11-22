@@ -23,3 +23,14 @@
             app.MapRazorPages();
 
             app.Run();
+
+/*
+ Зробити список Persons
+
+Нова сторінка Razor Pages
+Вивести їх на сторінку у вигляді таблиці
+Колонки: Id, Name, Опис, Email, Birthday, Skills 
+
+ 
+ 
+ */

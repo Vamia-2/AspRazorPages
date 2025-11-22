@@ -1,7 +1,49 @@
 ﻿@page
 @model AspRazorPages.Pages.InfoModel
 @{
-	ViewData["Title"] = "Info Page";
+	ViewData["Title"] = Model.Person.Name;
 }
+
 <h1>@ViewData["Title"]</h1>
-<p>Hello World. My name Ivan is group P33</p>
+
+<div class="row">
+	<div class="col-md-4 offset-md-4">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">@Model.Person.Name</h4>
+			</div>
+			<div class="card-body">
+				<table class="table table-hover">
+					<thead></thead>
+					<tbody>
+						<tr>
+							<th>Description</th>
+							<td>@Model.Person.Description</td>
+						</tr>
+						<tr>
+							<th>Email</th>
+							<td>@Model.Person.Email</td>
+						</tr>
+						<tr>
+							<th>Birthday</th>
+							<td>@Model.Person.Birthday.ToString("dd.MM.yyyy")</td>
+						</tr>
+						<tr>
+							<th>Skills</th>
+							<td>
+								@foreach (var skill in Model.Person.Skills)
+								{
+									<div>@skill.Title</div>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: @skill.Level%"></div>
+									</div>
+								}
+							</td>
+						</tr>
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
