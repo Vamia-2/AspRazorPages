@@ -1,0 +1,23 @@
+﻿@page
+@model AspRazorPages.Pages.PersonSkillEditModel
+@{
+
+}
+
+<h2>Edit Skill</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Skill.Title"></label>
+        <input asp-for="Skill.Title" class="form-control" />
+        <span asp-validation-for="Skill.Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Skill.Level"></label>
+        <input asp-for="Skill.Level" min="0" max="100" step="1" class="form-control" />
+        <span asp-validation-for="Skill.Level" class="text-danger"></span>
+    </div>
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-page="/PersonSkills" asp-route-id="@Request.Query["personId"]" class="btn btn-secondary">Cancel</a>
+</form>

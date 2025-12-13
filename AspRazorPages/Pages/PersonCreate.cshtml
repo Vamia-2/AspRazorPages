@@ -1,0 +1,38 @@
+﻿@page
+@model AspRazorPages.Pages.PersonCreateModel
+@{
+}
+
+<h2>Create New Person</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Person.Name"></label>
+        <input asp-for="Person.Name" class="form-control" />
+        <span asp-validation-for="Person.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Person.Description"></label>
+        <textarea rows="5" asp-for="Person.Description" class="form-control"></textarea>
+        <span asp-validation-for="Person.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Person.Email"></label>
+        <input asp-for="Person.Email" class="form-control" />
+        <span asp-validation-for="Person.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Person.Birthday"></label>
+        <input asp-for="Person.Birthday" class="form-control" type="date" />
+        <span asp-validation-for="Person.Birthday" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="AvatartImage"></label>
+        <input asp-for="AvatartImage" accept=".jpg,.jpeg,.png" type="file" class="form-control" />
+        <span asp-validation-for="AvatartImage" class="text-danger"></span>
+    </div>
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-page="/Persons" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>

@@ -1,16 +1,15 @@
 using AspRazorPages.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+
 namespace AspRazorPages.Pages;
 
-public class InfoModel(IPersonDataProvider dataProvider) : PageModel
+public class PersonsModel(IPersonDataProvider dataProvider) : PageModel
 {
-    public Person Person { get; set; }
     public List<Person> Persons { get; set; }
 
-    public void OnGet(int id)
+    public void OnGet()
     {
         Persons = dataProvider.GetAll();
-        Person = dataProvider.GetById(id);
     }
 }

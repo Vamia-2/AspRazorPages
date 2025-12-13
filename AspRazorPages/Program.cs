@@ -1,36 +1,47 @@
-           var builder = WebApplication.CreateBuilder(args);
+п»їusing AspRazorPages.Models;
+using AspRazorPages.Models;
 
-            // Add services to the container.
-            builder.Services.AddRazorPages();
+var builder = WebApplication.CreateBuilder(args);
 
-            var app = builder.Build();
+// Add services to the container.
+builder.Services.AddRazorPages();
+builder.Services.AddScoped<IPersonDataProvider, FilePersonDataProvider>();
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+var app = builder.Build();
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
 
-            app.UseRouting();
+app.UseHttpsRedirection();
+app.UseStaticFiles();
 
-            app.UseAuthorization();
+app.UseRouting();
 
-            app.MapRazorPages();
+app.UseAuthorization();
 
-            app.Run();
+app.MapRazorPages();
+
+app.Run();
 
 /*
- Зробити список Persons
-
-Нова сторінка Razor Pages
-Вивести їх на сторінку у вигляді таблиці
-Колонки: Id, Name, Опис, Email, Birthday, Skills 
-
- 
- 
- */
+ * пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Persons
+ * 
+ * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Razor Pages
+ * пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+ * пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: Id, Name, пїЅпїЅпїЅпїЅ, Email, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+ * 
+ * 
+ * пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+ * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ IPersonDataProvider
+ * 
+ * 
+ * 
+ * 
+ * 
+ * Р”РѕРґР°С‚Рё СЃС‚РѕСЂС–РЅРєРё РґР»СЏ СЃС‚РІРѕСЂРµРЅРЅСЏ С‚Р° СЂРµРґР°РіСѓРІР°РЅРЅСЏ РЅР°РІРёС‡РѕРє (Skills) РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕС— РѕСЃРѕР±Рё (Person).
+ */ 

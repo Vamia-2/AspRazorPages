@@ -1,0 +1,34 @@
+﻿@page
+@model AspRazorPages.Pages.PersonEditModel
+@{
+}
+
+<h2>Edit Person</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Person.Name"></label>
+        <input asp-for="Person.Name" class="form-control" />
+        <span asp-validation-for="Person.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Person.Description"></label>
+        <textarea rows="5" asp-for="Person.Description" class="form-control"></textarea>
+        <span asp-validation-for="Person.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Person.Email"></label>
+        <input asp-for="Person.Email" class="form-control" />
+        <span asp-validation-for="Person.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Person.Birthday"></label>
+        <input asp-for="Person.Birthday" class="form-control" type="date" />
+        <span asp-validation-for="Person.Birthday" class="text-danger"></span>
+    </div>
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-page="/Persons" class="btn btn-secondary">Cancel</a>
+    </div>
+
+</form>
