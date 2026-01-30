@@ -1,31 +1,50 @@
 ﻿@page
 @model AspRazorPages.Pages.PersonSkillsModel
 @{
-
 }
-<h2>PersonSkills @Model Person.Name</h2>
 
-<div>
-	<a class="btn btn-success" asp-page="/PersonSkillCreate">Create skill</a>
+<h1>Manage Skills for @Model.Person.Name</h1>
 
-	<a class="btn btn-secondary" asp-asp-page="/Persons">Back to Persons</a>
+<div class="mt-4 mb-4">
+    <a class="btn btn-success"
+       asp-page="/PersonSkillCreate"
+       asp-route-personId="@Model.Person.Id">
+        Create skill
+    </a>
+
+    <a class="btn btn-secondary"
+       asp-page="/Persons">
+        Back to Persons
+    </a>
 </div>
 
 
-<table>
-	<thead>
-		<tr>
-			<th>Skill Name</th>
-			<th>Level</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var skill in Model.Skills)
-		{
-			
-		}
-	</tbody>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Skill Name</th>
+            <th>Level</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var skill in Model.Skills)
+        {
+            <tr>
+                <td>@skill.Title</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: @skill.Level%"></div>
+                    </div>
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-page="/PersonSkillEdit"
+                       asp-route-personId="@Model.Person.Id"
+                       asp-route-skillId="@skill.Id">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
-
-

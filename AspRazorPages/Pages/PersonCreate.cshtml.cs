@@ -54,30 +54,6 @@ public class PersonCreateModel(IPersonDataProvider dataProvider, IWebHostEnviron
             Person.AvatarImageSrc = $"/uploads/avatars/{fileName}";
 
         }
-        if (Resume != null)
-        {
-            // ������������� �������� (��������) ���� ���� 
-
-            var uploadDir = Path.Combine(environment.WebRootPath, "uploads", "resume");
-            // ��������� �������� ���� �� �� ����
-            if (!Directory.Exists(uploadDir))
-            {
-                Directory.CreateDirectory(uploadDir);
-            }
-            // ��������� ����������� ����� �����
-            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(Resume.FileName)}";
-            // ������ ���� �� �����
-            var filePath = Path.Combine(uploadDir, fileName);
-
-            // ���������� �����
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                Resume.CopyTo(fileStream);
-            }
-            // ������������ ����� �� �������� � ������ Person
-            Person.AvatarImageSrc = $"/uploads/resume/{fileName}";
-
-        }
 
         dataProvider.Add(Person);
         dataProvider.SaveChanges();
